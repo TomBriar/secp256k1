@@ -20,6 +20,7 @@ valgrind --version || true
     --enable-module-ecdh="$ECDH" --enable-module-recovery="$RECOVERY" \
     --enable-module-ellsq="$ELLSQ" \
     --enable-module-schnorrsig="$SCHNORRSIG" \
+    --enable-module-ecies="$ECIES" \
     --with-valgrind="$WITH_VALGRIND" \
     --host="$HOST" $EXTRAFLAGS
 

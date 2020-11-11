@@ -1,7 +1,11 @@
+<<<<<<< HEAD
 bench
+bench_ecies
 bench_ecmult
 bench_internal
+bench_whitelist
 tests
+example_musig
 exhaustive_tests
 precompute_ecmult_gen
 precompute_ecmult
