@@ -6777,6 +6777,10 @@ void run_ecdsa_openssl(void) {
 # include "modules/ecies/tests_impl.h"
 #endif
 
+#ifdef ENABLE_MODULE_AES
+# include "modules/aes/tests_impl.h"
+#endif
+
 #ifdef ENABLE_MODULE_ECDH
 # include "modules/ecdh/tests_impl.h"
 #endif
@@ -7057,7 +7061,13 @@ int main(int argc, char **argv) {
     run_eckey_negate_test();
 
 #ifdef ENABLE_MODULE_ECIES
+    /* ecies tests */
     run_ecies_tests();
+#endif
+
+#ifdef ENABLE_MODULE_AES
+    /* aes tests */
+    run_aes_tests();
 #endif
 
 #ifdef ENABLE_MODULE_ECDH

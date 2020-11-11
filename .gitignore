@@ -1,5 +1,8 @@
 bench
 bench_ecies
+bench_inv
+bench_aes
+bench_ecdh
 bench_ecmult
 bench_internal
 bench_whitelist

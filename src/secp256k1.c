@@ -737,6 +737,7 @@ int secp256k1_ec_pubkey_combine(const secp256k1_context* ctx, secp256k1_pubkey *
     return 1;
 }
 
+<<<<<<< HEAD
 int secp256k1_tagged_sha256(const secp256k1_context* ctx, unsigned char *hash32, const unsigned char *tag, size_t taglen, const unsigned char *msg, size_t msglen) {
     secp256k1_sha256 sha;
     VERIFY_CHECK(ctx != NULL);
@@ -752,6 +753,10 @@ int secp256k1_tagged_sha256(const secp256k1_context* ctx, unsigned char *hash32,
 
 #ifdef ENABLE_MODULE_ECIES
 # include "modules/ecies/main_impl.h"
+=======
+#ifdef ENABLE_MODULE_AES
+# include "modules/aes/main_impl.h"
+>>>>>>> 0aa2a1e (aes: add new empty module)
 #endif
 
 #ifdef ENABLE_MODULE_ECDH

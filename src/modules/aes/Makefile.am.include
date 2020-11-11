@@ -1,0 +1,10 @@
+include_HEADERS += include/secp256k1_aes.h
+noinst_HEADERS += src/modules/aes/tests_impl.h
+noinst_HEADERS += src/modules/aes/main_impl.h
+
+if USE_BENCHMARK
+noinst_PROGRAMS += bench_aes
+bench_aes_SOURCES = src/bench_aes.c
+bench_aes_LDADD = libsecp256k1.la $(SECP_LIBS)
+bench_aes_LDFLAGS = -static
+endif

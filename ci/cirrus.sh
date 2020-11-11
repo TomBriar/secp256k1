@@ -21,6 +21,10 @@ valgrind --version || true
     --enable-module-ellsq="$ELLSQ" \
     --enable-module-schnorrsig="$SCHNORRSIG" \
     --enable-module-ecies="$ECIES" \
+    --enable-module-ecdsa-s2c="$ECDSA_S2C" \
+    --enable-module-aes="$AES" \
+    --enable-module-rangeproof="$RANGEPROOF" --enable-module-whitelist="$WHITELIST" --enable-module-generator="$GENERATOR" \
+    --enable-module-schnorrsig="$SCHNORRSIG"  --enable-module-musig="$MUSIG" --enable-module-ecdsa-adaptor="$ECDSAADAPTOR" \
     --with-valgrind="$WITH_VALGRIND" \
     --host="$HOST" $EXTRAFLAGS
 

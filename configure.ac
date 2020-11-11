@@ -145,6 +145,11 @@ AC_ARG_ENABLE(module_ecies,
     [enable_module_ecies=$enableval],
     [enable_module_ecies=no])
 
+AC_ARG_ENABLE(module_aes,
+    AS_HELP_STRING([--enable-module-aes],[enable AES module (experimental)]),
+    [enable_module_aes=$enableval],
+    [enable_module_aes=no])
+
 AC_ARG_ENABLE(module_ecdh,
     AS_HELP_STRING([--enable-module-ecdh],[enable ECDH shared secret computation]),
     [enable_module_ecdh=$enableval],
@@ -348,8 +353,17 @@ SECP_CFLAGS="$SECP_CFLAGS $WERROR_CFLAGS"
 ### Handle module options
 ###
 
+<<<<<<< HEAD
 if test x"$enable_module_ecies" = x"yes"; then
   AC_DEFINE(ENABLE_MODULE_ECIES, 1, [Define this symbol to enable the ECIES module])
+=======
+if test x"$enable_module_aes" = x"yes"; then
+  AC_DEFINE(ENABLE_MODULE_AES, 1, [Define this symbol to enable the AES module])
+fi
+
+if test x"$enable_module_ecdh" = x"yes"; then
+  AC_DEFINE(ENABLE_MODULE_ECDH, 1, [Define this symbol to enable the ECDH module])
+>>>>>>> 0aa2a1e (aes: add new empty module)
 fi
 
 if test x"$enable_module_ecdh" = x"yes"; then
@@ -387,7 +401,11 @@ if test x"$enable_experimental" = x"yes"; then
   AC_MSG_NOTICE([******])
   AC_MSG_NOTICE([WARNING: experimental build])
   AC_MSG_NOTICE([Experimental features do not have stable APIs or properties, and may not be safe for production use.])
+<<<<<<< HEAD
   AC_MSG_NOTICE([Building ECIES module: $enable_module_ecies])
+=======
+  AC_MSG_NOTICE([Building AES module: $enable_module_aes])
+>>>>>>> 0aa2a1e (aes: add new empty module)
   AC_MSG_NOTICE([Building NUMS generator module: $enable_module_generator])
   AC_MSG_NOTICE([Building range proof module: $enable_module_rangeproof])
   AC_MSG_NOTICE([Building key whitelisting module: $enable_module_whitelist])
@@ -404,6 +422,9 @@ if test x"$enable_experimental" = x"yes"; then
   fi
 
   if test x"$enable_module_generator" != x"yes"; then
+    if test x"$enable_module_aes" = x"yes"; then
+      AC_MSG_ERROR([AES module requires the generator module. Use --enable-module-generator to allow.])
+    fi
     if test x"$enable_module_rangeproof" = x"yes"; then
       AC_MSG_ERROR([Rangeproof module requires the generator module. Use --enable-module-generator to allow.])
     fi
@@ -418,8 +439,13 @@ if test x"$enable_experimental" = x"yes"; then
     fi
   fi
 else
+<<<<<<< HEAD
   if test x"$enable_module_ecies" = x"yes"; then
     AC_MSG_ERROR([ECIES module is experimental. Use --enable-experimental to allow.])
+=======
+  if test x"$enable_module_aes" = x"yes"; then
+    AC_MSG_ERROR([AES module is experimental. Use --enable-experimental to allow.])
+>>>>>>> 0aa2a1e (aes: add new empty module)
   fi
   if test x"$enable_module_musig" = x"yes"; then
     AC_MSG_ERROR([MuSig module is experimental. Use --enable-experimental to allow.])
@@ -454,7 +480,11 @@ AM_CONDITIONAL([USE_TESTS], [test x"$use_tests" != x"no"])
 AM_CONDITIONAL([USE_EXHAUSTIVE_TESTS], [test x"$use_exhaustive_tests" != x"no"])
 AM_CONDITIONAL([USE_BENCHMARK], [test x"$use_benchmark" = x"yes"])
 AM_CONDITIONAL([USE_ECMULT_STATIC_PRECOMPUTATION], [test x"$set_precomp" = x"yes"])
+<<<<<<< HEAD
 AM_CONDITIONAL([ENABLE_MODULE_ECIES], [test x"$enable_module_ecies" = x"yes"])
+=======
+AM_CONDITIONAL([ENABLE_MODULE_AES], [test x"$enable_module_aes" = x"yes"])
+>>>>>>> 0aa2a1e (aes: add new empty module)
 AM_CONDITIONAL([ENABLE_MODULE_ECDH], [test x"$enable_module_ecdh" = x"yes"])
 AM_CONDITIONAL([ENABLE_MODULE_RECOVERY], [test x"$enable_module_recovery" = x"yes"])
 AM_CONDITIONAL([ENABLE_MODULE_EXTRAKEYS], [test x"$enable_module_extrakeys" = x"yes"])
