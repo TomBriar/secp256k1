@@ -18,6 +18,7 @@ env:
   ECDH: no
   RECOVERY: no
   SCHNORRSIG: no
+  ELLSQ: no
   ### test options
   SECP256K1_TEST_ITERS:
   BENCH: yes
@@ -65,12 +66,12 @@ task:
   << : *LINUX_CONTAINER
   matrix: &ENV_MATRIX
     - env: {WIDEMUL:  int64,  RECOVERY: yes}
-    - env: {WIDEMUL:  int64,                 ECDH: yes, EXPERIMENTAL: yes, SCHNORRSIG: yes}
+    - env: {WIDEMUL:  int64,                 ECDH: yes, EXPERIMENTAL: yes, SCHNORRSIG: yes, ELLSQ: yes}
     - env: {WIDEMUL: int128}
-    - env: {WIDEMUL: int128,  RECOVERY: yes,            EXPERIMENTAL: yes, SCHNORRSIG: yes}
+    - env: {WIDEMUL: int128,  RECOVERY: yes,            EXPERIMENTAL: yes, SCHNORRSIG: yes, ELLSQ: yes}
     - env: {WIDEMUL: int128,                 ECDH: yes, EXPERIMENTAL: yes, SCHNORRSIG: yes}
     - env: {WIDEMUL: int128,  ASM: x86_64}
-    - env: {                  RECOVERY: yes,            EXPERIMENTAL: yes, SCHNORRSIG: yes}
+    - env: {                  RECOVERY: yes,            EXPERIMENTAL: yes, SCHNORRSIG: yes, ELLSQ: yes}
     - env: {BUILD: distcheck, WITH_VALGRIND: no, CTIMETEST: no, BENCH: no}
     - env: {CPPFLAGS: -DDETERMINISTIC}
     - env: {CFLAGS: -O0, CTIMETEST: no}
@@ -92,6 +93,7 @@ task:
   env:
     HOST: i686-linux-gnu
     ECDH: yes
+    ELLSQ: yes
     RECOVERY: yes
     EXPERIMENTAL: yes
     SCHNORRSIG: yes
@@ -174,6 +176,7 @@ task:
     HOST: s390x-linux-gnu
     WITH_VALGRIND: no
     ECDH: yes
+    ELLSQ: yes
     RECOVERY: yes
     EXPERIMENTAL: yes
     SCHNORRSIG: yes
@@ -194,6 +197,7 @@ task:
     HOST: arm-linux-gnueabihf
     WITH_VALGRIND: no
     ECDH: yes
+    ELLSQ: tes
     RECOVERY: yes
     EXPERIMENTAL: yes
     SCHNORRSIG: yes
@@ -215,6 +219,7 @@ task:
     HOST: aarch64-linux-gnu
     WITH_VALGRIND: no
     ECDH: yes
+    ELLSQ: yes
     RECOVERY: yes
     EXPERIMENTAL: yes
     SCHNORRSIG: yes
@@ -233,6 +238,7 @@ task:
     HOST: powerpc64le-linux-gnu
     WITH_VALGRIND: no
     ECDH: yes
+    ELLSQ: yes
     RECOVERY: yes
     EXPERIMENTAL: yes
     SCHNORRSIG: yes
@@ -251,6 +257,7 @@ task:
     HOST: x86_64-w64-mingw32
     WITH_VALGRIND: no
     ECDH: yes
+    ELLSQ: yes
     RECOVERY: yes
     EXPERIMENTAL: yes
     SCHNORRSIG: yes
@@ -265,6 +272,7 @@ task:
   << : *LINUX_CONTAINER
   env:
     ECDH: yes
+    ELLSQ: yes
     RECOVERY: yes
     EXPERIMENTAL: yes
     SCHNORRSIG: yes
@@ -316,6 +324,7 @@ task:
     WERROR_CFLAGS:
     EXPERIMENTAL: yes
     ECDH: yes
+    ELLSQ: yes
     RECOVERY: yes
     SCHNORRSIG: yes
   << : *MERGE_BASE
