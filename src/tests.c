@@ -7056,8 +7056,8 @@ int main(int argc, char **argv) {
     /* EC key arithmetic test */
     run_eckey_negate_test();
 
-#ifdef ENABLE_MODULE_BULLETPROOFS
-    run_bulletproofs_tests();
+#ifdef ENABLE_MODULE_ECIES
+    run_ecies_tests();
 #endif
 
 #ifdef ENABLE_MODULE_ECDH

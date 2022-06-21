@@ -7,7 +7,7 @@
 #ifndef _SECP256K1_MODULE_ECIES_TEST_
 #define _SECP256K1_MODULE_ECIES_TEST_
 
-void run_bulletproofs_tests(void) {
+void run_ecies_tests(void) {
     /* TODO */
 }
 

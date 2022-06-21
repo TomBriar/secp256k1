@@ -348,8 +348,8 @@ SECP_CFLAGS="$SECP_CFLAGS $WERROR_CFLAGS"
 ### Handle module options
 ###
 
-if test x"$enable_module_bulletproofs" = x"yes"; then
-  AC_DEFINE(ENABLE_MODULE_BULLETPROOFS, 1, [Define this symbol to enable the Bulletproofs module])
+if test x"$enable_module_ecies" = x"yes"; then
+  AC_DEFINE(ENABLE_MODULE_ECIES, 1, [Define this symbol to enable the ECIES module])
 fi
 
 if test x"$enable_module_ecdh" = x"yes"; then
@@ -387,23 +387,15 @@ if test x"$enable_experimental" = x"yes"; then
   AC_MSG_NOTICE([******])
   AC_MSG_NOTICE([WARNING: experimental build])
   AC_MSG_NOTICE([Experimental features do not have stable APIs or properties, and may not be safe for production use.])
-<<<<<<< HEAD
-=======
-  AC_MSG_NOTICE([Building Bulletproofs module: $enable_module_bulletproofs])
+  AC_MSG_NOTICE([Building ECIES module: $enable_module_ecies])
   AC_MSG_NOTICE([Building NUMS generator module: $enable_module_generator])
   AC_MSG_NOTICE([Building range proof module: $enable_module_rangeproof])
   AC_MSG_NOTICE([Building key whitelisting module: $enable_module_whitelist])
   AC_MSG_NOTICE([Building surjection proof module: $enable_module_surjectionproof])
   AC_MSG_NOTICE([Building MuSig module: $enable_module_musig])
->>>>>>> 0aa2a1e (bulletproofs: add new empty module)
   AC_MSG_NOTICE([Building extrakeys module: $enable_module_extrakeys])
   AC_MSG_NOTICE([Building schnorrsig module: $enable_module_schnorrsig])
   AC_MSG_NOTICE([Building Elligator^2 module: $enable_module_ellsq])
-  AC_MSG_NOTICE([******])
-<<<<<<< HEAD
-else
-=======
-
 
   if test x"$enable_module_schnorrsig" != x"yes"; then
     if test x"$enable_module_musig" = x"yes"; then
@@ -412,9 +404,6 @@ else
   fi
 
   if test x"$enable_module_generator" != x"yes"; then
-    if test x"$enable_module_bulletproofs" = x"yes"; then
-      AC_MSG_ERROR([Bulletproofs module requires the generator module. Use --enable-module-generator to allow.])
-    fi
     if test x"$enable_module_rangeproof" = x"yes"; then
       AC_MSG_ERROR([Rangeproof module requires the generator module. Use --enable-module-generator to allow.])
     fi
@@ -429,13 +418,12 @@ else
     fi
   fi
 else
-  if test x"$enable_module_bulletproofs" = x"yes"; then
-    AC_MSG_ERROR([Bulletproofs module is experimental. Use --enable-experimental to allow.])
+  if test x"$enable_module_ecies" = x"yes"; then
+    AC_MSG_ERROR([ECIES module is experimental. Use --enable-experimental to allow.])
   fi
   if test x"$enable_module_musig" = x"yes"; then
     AC_MSG_ERROR([MuSig module is experimental. Use --enable-experimental to allow.])
   fi
->>>>>>> 0aa2a1e (bulletproofs: add new empty module)
   if test x"$enable_module_extrakeys" = x"yes"; then
     AC_MSG_ERROR([extrakeys module is experimental. Use --enable-experimental to allow.])
   fi
@@ -465,11 +453,8 @@ AM_CONDITIONAL([ENABLE_COVERAGE], [test x"$enable_coverage" = x"yes"])
 AM_CONDITIONAL([USE_TESTS], [test x"$use_tests" != x"no"])
 AM_CONDITIONAL([USE_EXHAUSTIVE_TESTS], [test x"$use_exhaustive_tests" != x"no"])
 AM_CONDITIONAL([USE_BENCHMARK], [test x"$use_benchmark" = x"yes"])
-<<<<<<< HEAD
-=======
 AM_CONDITIONAL([USE_ECMULT_STATIC_PRECOMPUTATION], [test x"$set_precomp" = x"yes"])
-AM_CONDITIONAL([ENABLE_MODULE_BULLETPROOFS], [test x"$enable_module_bulletproofs" = x"yes"])
->>>>>>> 0aa2a1e (bulletproofs: add new empty module)
+AM_CONDITIONAL([ENABLE_MODULE_ECIES], [test x"$enable_module_ecies" = x"yes"])
 AM_CONDITIONAL([ENABLE_MODULE_ECDH], [test x"$enable_module_ecdh" = x"yes"])
 AM_CONDITIONAL([ENABLE_MODULE_RECOVERY], [test x"$enable_module_recovery" = x"yes"])
 AM_CONDITIONAL([ENABLE_MODULE_EXTRAKEYS], [test x"$enable_module_extrakeys" = x"yes"])
