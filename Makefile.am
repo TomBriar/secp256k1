@@ -126,18 +126,18 @@ tests_LDFLAGS = -static
 TESTS += tests
 endif
 
-if USE_EXHAUSTIVE_TESTS
-noinst_PROGRAMS += exhaustive_tests
-exhaustive_tests_SOURCES = src/tests_exhaustive.c
-exhaustive_tests_CPPFLAGS = $(SECP_INCLUDES)
-if !ENABLE_COVERAGE
-exhaustive_tests_CPPFLAGS += -DVERIFY
-endif
-# Note: do not include $(PRECOMPUTED_LIB) in exhaustive_tests (it uses runtime-generated tables).
-exhaustive_tests_LDADD = $(SECP_LIBS) $(COMMON_LIB)
-exhaustive_tests_LDFLAGS = -static
-TESTS += exhaustive_tests
-endif
+# if USE_EXHAUSTIVE_TESTS
+# noinst_PROGRAMS += exhaustive_tests
+# exhaustive_tests_SOURCES = src/tests_exhaustive.c
+# exhaustive_tests_CPPFLAGS = $(SECP_INCLUDES)
+# if !ENABLE_COVERAGE
+# exhaustive_tests_CPPFLAGS += -DVERIFY
+# endif
+# # Note: do not include $(PRECOMPUTED_LIB) in exhaustive_tests (it uses runtime-generated tables).
+# exhaustive_tests_LDADD = $(SECP_LIBS) $(COMMON_LIB)
+# exhaustive_tests_LDFLAGS = -static
+# TESTS += exhaustive_tests
+# endif
 
 ### Precomputed tables
 EXTRA_PROGRAMS = precompute_ecmult precompute_ecmult_gen
