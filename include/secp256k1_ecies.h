@@ -22,11 +22,11 @@ extern "C" {
  */
 SECP256K1_API int secp256k1_ecies_encrypt(
     const secp256k1_context* ctx,
-    const unsigned char *crypt32,
+    unsigned char *crypt32,
     const unsigned char *m32,
     const unsigned char *a_pr32,
     const unsigned char *b_ell64
-) SECP256K1_ARG_NONNULL(1) SECP256K1_ARG_NONNULL(2) SECP256K1_ARG_NONNULL(3) SECP256K1_ARG_NONNULL(4) SECP256K1_ARG_NONNULL(5);//TODO: Need one for the ctx obj?
+) SECP256K1_ARG_NONNULL(1) SECP256K1_ARG_NONNULL(2) SECP256K1_ARG_NONNULL(3) SECP256K1_ARG_NONNULL(4) SECP256K1_ARG_NONNULL(5);
 
 /* Decrypt a message with ECIES.
  *
@@ -39,13 +39,14 @@ SECP256K1_API int secp256k1_ecies_encrypt(
  *
  * This function runs in unknown time.
  */
+
 SECP256K1_API int secp256k1_ecies_decrypt(
     const secp256k1_context* ctx,
-    const unsigned char *rem32,
+    unsigned char *rem32,
     const unsigned char *crypt32,
     const unsigned char *b_pr32,
-    const unsigned char *b_rnd32
-) SECP256K1_ARG_NONNULL(1) SECP256K1_ARG_NONNULL(2) SECP256K1_ARG_NONNULL(3) SECP256K1_ARG_NONNULL(4) SECP256K1_ARG_NONNULL(5);//TODO: Need one for the ctx obj?
+    const unsigned char *a_ell64
+) SECP256K1_ARG_NONNULL(1) SECP256K1_ARG_NONNULL(2) SECP256K1_ARG_NONNULL(3) SECP256K1_ARG_NONNULL(4) SECP256K1_ARG_NONNULL(5);
 
 
 # ifdef __cplusplus
