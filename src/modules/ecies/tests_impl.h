@@ -10,7 +10,7 @@
 void run_ecies_tests(void) {
     unsigned char a_rnd32[32], a_ell_rnd32[32], a_ell64[64];
     unsigned char b_rnd32[32], b_ell_rnd32[32], b_ell64[64];
-    unsigned char m32[32], crypt32[32], rem32[32];
+    unsigned char m32[32], crypt32[32], rem32[32], iv16[32];
     secp256k1_pubkey a_pubkey, b_pubkey;
     secp256k1_scalar a_pr, b_pr, msg, remsg;
     secp256k1_gej a_gej, b_gej;
@@ -36,11 +36,14 @@ void run_ecies_tests(void) {
     /*Random Message*/
     secp256k1_testrand256(&m32);
 
+    /*Nonce*/
+    secp256k1_testrand256(&iv16);
+
     /*Encrypt*/
-    secp256k1_ecies_encrypt(ctx, &crypt32, &m32, &a_rnd32, &b_ell64);
+    secp256k1_ecies_encrypt(ctx, &crypt32, &m32, &a_rnd32, &b_ell64, &iv16);
 
     /*Decrypt*/
-   	secp256k1_ecies_decrypt(ctx, &rem32, &crypt32, &b_rnd32, &a_ell64);
+   	secp256k1_ecies_decrypt(ctx, &rem32, &crypt32, &b_rnd32, &a_ell64, &iv16);
 
     /*Test*/
     secp256k1_scalar_set_b32(&msg, &m32, &overflow);
