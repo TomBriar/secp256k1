@@ -9,6 +9,8 @@
 
 void run_aes_tests(void) {
     /* TODO */
+	printf("hi");
+	CHECK(1 == 2);
 }
 
 #endif

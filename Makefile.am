@@ -173,10 +173,9 @@ BUILT_SOURCES = $(PRECOMP)
 
 maintainer-clean-local: clean-precomp
 
-<<<<<<< HEAD
 clean-precomp:
 	rm -f $(PRECOMP)
-=======
+	n
 if ENABLE_MODULE_AES
 include src/modules/aes/Makefile.am.include
 endif
@@ -184,7 +183,6 @@ endif
 if ENABLE_MODULE_ECDH
 include src/modules/ecdh/Makefile.am.include
 endif
->>>>>>> 0aa2a1e (aes: add new empty module)
 
 EXTRA_DIST = autogen.sh SECURITY.md
 
