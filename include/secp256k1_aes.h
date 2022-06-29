@@ -87,6 +87,7 @@ void AES192_decrypt(const AES192_ctx* ctx, size_t blocks, unsigned char* plain16
 void AES256_init(AES256_ctx* ctx, const unsigned char* key32);
 void AES256_encrypt(const AES256_ctx* ctx, size_t blocks, unsigned char* cipher16, const unsigned char* plain16);
 void AES256_decrypt(const AES256_ctx* ctx, size_t blocks, unsigned char* plain16, const unsigned char* cipher16);
+*/
 
 /* Initilize an AES128_CBC encryption.
  *
@@ -120,7 +121,7 @@ SECP256K1_API void AES128_CBC_encrypt(
     size_t blocks, 
     unsigned char* encrypted, 
     const unsigned char* plain
-) SECP256K1_ARG_NONNULL(1) SECP256K1_ARG_NONNULL(2) SECP256K1_ARG_NONNULL(3) SECP256K1_ARG_NONNULL(4);
+) SECP256K1_ARG_NONNULL(1) SECP256K1_ARG_NONNULL(3) SECP256K1_ARG_NONNULL(4);
 
 /* Decrypts a message with AES128_CBC Decryption.
  *
@@ -138,7 +139,7 @@ SECP256K1_API void AES128_CBC_decrypt(
     size_t blocks, 
     unsigned char* plain, 
     const unsigned char *encrypted
-) SECP256K1_ARG_NONNULL(1) SECP256K1_ARG_NONNULL(2) SECP256K1_ARG_NONNULL(3) SECP256K1_ARG_NONNULL(4);
+) SECP256K1_ARG_NONNULL(1) SECP256K1_ARG_NONNULL(3) SECP256K1_ARG_NONNULL(4);
 
 /* Initilize an AES192_CBC encryption.
  *
@@ -172,7 +173,7 @@ SECP256K1_API void AES192_CBC_encrypt(
     size_t blocks, 
     unsigned char* encrypted, 
     const unsigned char* plain
-) SECP256K1_ARG_NONNULL(1) SECP256K1_ARG_NONNULL(2) SECP256K1_ARG_NONNULL(3) SECP256K1_ARG_NONNULL(4);
+) SECP256K1_ARG_NONNULL(1) SECP256K1_ARG_NONNULL(3) SECP256K1_ARG_NONNULL(4);
 
 /* Decrypts a message with AES192_CBC Decryption.
  *
@@ -190,7 +191,7 @@ SECP256K1_API void AES192_CBC_decrypt(
     size_t blocks, 
     unsigned char* plain, 
     const unsigned char *encrypted
-) SECP256K1_ARG_NONNULL(1) SECP256K1_ARG_NONNULL(2) SECP256K1_ARG_NONNULL(3) SECP256K1_ARG_NONNULL(4);
+) SECP256K1_ARG_NONNULL(1) SECP256K1_ARG_NONNULL(3) SECP256K1_ARG_NONNULL(4);
 
 /* Initilize an AES256_CBC encryption.
  *
@@ -224,7 +225,7 @@ SECP256K1_API void AES256_CBC_encrypt(
     size_t blocks, 
     unsigned char* encrypted, 
     const unsigned char* plain
-) SECP256K1_ARG_NONNULL(1) SECP256K1_ARG_NONNULL(2) SECP256K1_ARG_NONNULL(3) SECP256K1_ARG_NONNULL(4);
+) SECP256K1_ARG_NONNULL(1) SECP256K1_ARG_NONNULL(3) SECP256K1_ARG_NONNULL(4);
 
 /* Decrypts a message with AES256_CBC Decryption.
  *
@@ -242,7 +243,7 @@ SECP256K1_API void AES256_CBC_decrypt(
     size_t blocks, 
     unsigned char* plain, 
     const unsigned char *encrypted
-) SECP256K1_ARG_NONNULL(1) SECP256K1_ARG_NONNULL(2) SECP256K1_ARG_NONNULL(3) SECP256K1_ARG_NONNULL(4);
+) SECP256K1_ARG_NONNULL(1) SECP256K1_ARG_NONNULL(3) SECP256K1_ARG_NONNULL(4);
 
 # ifdef __cplusplus
 }

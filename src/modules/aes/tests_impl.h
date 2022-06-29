@@ -90,7 +90,7 @@ static void from_hex(unsigned char* data, int len, const char* hex) {
 void run_aes_tests(void) {
     int i;
     int fail = 0;
-    for (i = 0; i < sizeof(ctaes_tests) / sizeof(ctaes_tests[0]); i++) {
+    for (i = 0; (unsigned int)i < sizeof(ctaes_tests) / sizeof(ctaes_tests[0]); i++) {
         unsigned char key[32], plain[16], cipher[16], ciphered[16], deciphered[16];
         const ctaes_test* test = &ctaes_tests[i];
         assert(test->keysize == 128 || test->keysize == 192 || test->keysize == 256);
@@ -98,27 +98,27 @@ void run_aes_tests(void) {
         from_hex(cipher, 16, test->cipher);
         switch (test->keysize) {
             case 128: {
-                AES128_ctx ctx;
+                AES128_ctx aes128_ctx;
                 from_hex(key, 16, test->key);
-                AES128_init(&ctx, key);
-                AES128_encrypt(&ctx, 1, ciphered, plain);
-                AES128_decrypt(&ctx, 1, deciphered, cipher);
+                AES128_init(&aes128_ctx, key);
+                AES128_encrypt(&aes128_ctx, 1, ciphered, plain);
+                AES128_decrypt(&aes128_ctx, 1, deciphered, cipher);
                 break;
             }
             case 192: {
-                AES192_ctx ctx;
+                AES192_ctx aes192_ctx;
                 from_hex(key, 24, test->key);
-                AES192_init(&ctx, key);
-                AES192_encrypt(&ctx, 1, ciphered, plain);
-                AES192_decrypt(&ctx, 1, deciphered, cipher);
+                AES192_init(&aes192_ctx, key);
+                AES192_encrypt(&aes192_ctx, 1, ciphered, plain);
+                AES192_decrypt(&aes192_ctx, 1, deciphered, cipher);
                 break;
             }
             case 256: {
-                AES256_ctx ctx;
+                AES256_ctx aes256_ctx;
                 from_hex(key, 32, test->key);
-                AES256_init(&ctx, key);
-                AES256_encrypt(&ctx, 1, ciphered, plain);
-                AES256_decrypt(&ctx, 1, deciphered, cipher);
+                AES256_init(&aes256_ctx, key);
+                AES256_encrypt(&aes256_ctx, 1, ciphered, plain);
+                AES256_decrypt(&aes256_ctx, 1, deciphered, cipher);
                 break;
             }
         }
@@ -131,7 +131,7 @@ void run_aes_tests(void) {
             fail++;
         }
     }
-    for (i = 0; i < sizeof(ctaes_cbc_tests) / sizeof(ctaes_cbc_tests[0]); i++) {
+    for (i = 0; (unsigned int)i < sizeof(ctaes_cbc_tests) / sizeof(ctaes_cbc_tests[0]); i++) {
         const ctaes_cbc_test* test = &ctaes_cbc_tests[i];
         unsigned char key[32], iv[16], plain[4 * 16], cipher[4 * 16], ciphered[4 * 16], deciphered[4 * 16];
         assert(test->keysize == 128 || test->keysize == 192 || test->keysize == 256);
@@ -141,30 +141,30 @@ void run_aes_tests(void) {
         from_hex(cipher, test->nblocks * 16, test->cipher);
         switch (test->keysize) {
             case 128: {
-                AES128_CBC_ctx ctx;
+                AES128_CBC_ctx aes128_ctx;
                 from_hex(key, 16, test->key);
-                AES128_CBC_init(&ctx, key, iv);
-                AES128_CBC_encrypt(&ctx, test->nblocks, ciphered, plain);
-                AES128_CBC_init(&ctx, key, iv);
-                AES128_CBC_decrypt(&ctx, test->nblocks, deciphered, cipher);
+                AES128_CBC_init(&aes128_ctx, key, iv);
+                AES128_CBC_encrypt(&aes128_ctx, test->nblocks, ciphered, plain);
+                AES128_CBC_init(&aes128_ctx, key, iv);
+                AES128_CBC_decrypt(&aes128_ctx, test->nblocks, deciphered, cipher);
                 break;
             }
             case 192: {
-                AES192_CBC_ctx ctx;
+                AES192_CBC_ctx aes192_ctx;
                 from_hex(key, 24, test->key);
-                AES192_CBC_init(&ctx, key, iv);
-                AES192_CBC_encrypt(&ctx, test->nblocks, ciphered, plain);
-                AES192_CBC_init(&ctx, key, iv);
-                AES192_CBC_decrypt(&ctx, test->nblocks, deciphered, cipher);
+                AES192_CBC_init(&aes192_ctx, key, iv);
+                AES192_CBC_encrypt(&aes192_ctx, test->nblocks, ciphered, plain);
+                AES192_CBC_init(&aes192_ctx, key, iv);
+                AES192_CBC_decrypt(&aes192_ctx, test->nblocks, deciphered, cipher);
                 break;
             }
             case 256: {
-                AES256_CBC_ctx ctx;
+                AES256_CBC_ctx aes256_ctx;
                 from_hex(key, 32, test->key);
-                AES256_CBC_init(&ctx, key, iv);
-                AES256_CBC_encrypt(&ctx, test->nblocks, ciphered, plain);
-                AES256_CBC_init(&ctx, key, iv);
-                AES256_CBC_decrypt(&ctx, test->nblocks, deciphered, cipher);
+                AES256_CBC_init(&aes256_ctx, key, iv);
+                AES256_CBC_encrypt(&aes256_ctx, test->nblocks, ciphered, plain);
+                AES256_CBC_init(&aes256_ctx, key, iv);
+                AES256_CBC_decrypt(&aes256_ctx, test->nblocks, deciphered, cipher);
                 break;
             }
         }
