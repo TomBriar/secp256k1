@@ -49,12 +49,12 @@ typedef struct {
  *
  * This function runs in unknown time.
  */
-/*
+
 SECP256K1_API void AES128_init(
     AES128_ctx* ctx, 
     const unsigned char* key16
 ) SECP256K1_ARG_NONNULL(1) SECP256K1_ARG_NONNULL(2);
-*/
+
 /* Encrypts a message with AES128.
  *
  *  Returns: 1 when pubkey is valid.
@@ -66,28 +66,138 @@ SECP256K1_API void AES128_init(
  *
  * This function runs in unknown time.
  */
-/*
+
 SECP256K1_API void AES128_encrypt(
     const AES128_ctx* ctx, 
     size_t blocks, 
     unsigned char* cipher16, 
     const unsigned char* plain16
+) SECP256K1_ARG_NONNULL(1) SECP256K1_ARG_NONNULL(3) SECP256K1_ARG_NONNULL(4);
+
+/* Decrypts a message with AES128.
+ *
+ *  Returns: 1 when pubkey is valid.
+ *  Args:    ctx:           pointer to a AES128_ctx object
+ *  Out:     plain16:       pointer to 16 bytes of plain text to be decrypted
+ *  In:      blocks:        a size_t object of the number of 16 byte blocks to encrypt
+ *           cipher16:      pointer to 16 bytes of cipherd text 
+ *
+ *
+ * This function runs in unknown time.
+ */
+
+SECP256K1_API void AES128_decrypt(
+    const AES128_ctx* ctx, 
+    size_t blocks, 
+    unsigned char* plain16, 
+    const unsigned char* cipher16
+) SECP256K1_ARG_NONNULL(1) SECP256K1_ARG_NONNULL(3) SECP256K1_ARG_NONNULL(4);
+
+
+/* Initilize an AES encryption.
+ *
+ *  Returns: 1 when pubkey is valid.
+ *  Args:    ctx:           pointer to a AES192_ctx object
+ *  In:      key16:         pointer to 16 bytes of entropy (must be unpredictable).
+ *
+ * This function runs in unknown time.
+ */
+
+SECP256K1_API void AES192_init(
+    AES192_ctx* ctx, 
+    const unsigned char* key16
 ) SECP256K1_ARG_NONNULL(1) SECP256K1_ARG_NONNULL(2);
-*/
 
+/* Encrypts a message with AES192.
+ *
+ *  Returns: 1 when pubkey is valid.
+ *  Args:    ctx:           pointer to a AES192_ctx object
+ *  Out:     cipher16:      pointer to 16 bytes of cipherd text
+ *  In:      blocks:        a size_t object of the number of 16 byte blocks to encrypt
+ *           plain16:       pointer to 16 bytes of plain text to be encrypted
+ *
+ *
+ * This function runs in unknown time.
+ */
 
-/*
-void AES128_encrypt(const AES128_ctx* ctx, size_t blocks, unsigned char* cipher16, const unsigned char* plain16);
-void AES128_decrypt(const AES128_ctx* ctx, size_t blocks, unsigned char* plain16, const unsigned char* cipher16);
+SECP256K1_API void AES192_encrypt(
+    const AES192_ctx* ctx, 
+    size_t blocks, 
+    unsigned char* cipher16, 
+    const unsigned char* plain16
+) SECP256K1_ARG_NONNULL(1) SECP256K1_ARG_NONNULL(3) SECP256K1_ARG_NONNULL(4);
 
-void AES192_init(AES192_ctx* ctx, const unsigned char* key24);
-void AES192_encrypt(const AES192_ctx* ctx, size_t blocks, unsigned char* cipher16, const unsigned char* plain16);
-void AES192_decrypt(const AES192_ctx* ctx, size_t blocks, unsigned char* plain16, const unsigned char* cipher16);
+/* Decrypts a message with AES192.
+ *
+ *  Returns: 1 when pubkey is valid.
+ *  Args:    ctx:           pointer to a AES192_ctx object
+ *  Out:     plain16:       pointer to 16 bytes of plain text to be decrypted
+ *  In:      blocks:        a size_t object of the number of 16 byte blocks to encrypt
+ *           cipher16:      pointer to 16 bytes of cipherd text 
+ *
+ *
+ * This function runs in unknown time.
+ */
 
-void AES256_init(AES256_ctx* ctx, const unsigned char* key32);
-void AES256_encrypt(const AES256_ctx* ctx, size_t blocks, unsigned char* cipher16, const unsigned char* plain16);
-void AES256_decrypt(const AES256_ctx* ctx, size_t blocks, unsigned char* plain16, const unsigned char* cipher16);
-*/
+SECP256K1_API void AES192_decrypt(
+    const AES192_ctx* ctx, 
+    size_t blocks, 
+    unsigned char* plain16, 
+    const unsigned char* cipher16
+) SECP256K1_ARG_NONNULL(1) SECP256K1_ARG_NONNULL(3) SECP256K1_ARG_NONNULL(4);
+
+/* Initilize an AES encryption.
+ *
+ *  Returns: 1 when pubkey is valid.
+ *  Args:    ctx:           pointer to a AES192_ctx object
+ *  In:      key16:         pointer to 16 bytes of entropy (must be unpredictable).
+ *
+ * This function runs in unknown time.
+ */
+
+SECP256K1_API void AES256_init(
+    AES256_ctx* ctx, 
+    const unsigned char* key16
+) SECP256K1_ARG_NONNULL(1) SECP256K1_ARG_NONNULL(2);
+
+/* Encrypts a message with AES256.
+ *
+ *  Returns: 1 when pubkey is valid.
+ *  Args:    ctx:           pointer to a AES256_ctx object
+ *  Out:     cipher16:      pointer to 16 bytes of cipherd text
+ *  In:      blocks:        a size_t object of the number of 16 byte blocks to encrypt
+ *           plain16:       pointer to 16 bytes of plain text to be encrypted
+ *
+ *
+ * This function runs in unknown time.
+ */
+
+SECP256K1_API void AES256_encrypt(
+    const AES256_ctx* ctx, 
+    size_t blocks, 
+    unsigned char* cipher16, 
+    const unsigned char* plain16
+) SECP256K1_ARG_NONNULL(1) SECP256K1_ARG_NONNULL(3) SECP256K1_ARG_NONNULL(4);
+
+/* Decrypts a message with AES256.
+ *
+ *  Returns: 1 when pubkey is valid.
+ *  Args:    ctx:           pointer to a AES256_ctx object
+ *  Out:     plain16:       pointer to 16 bytes of plain text to be decrypted
+ *  In:      blocks:        a size_t object of the number of 16 byte blocks to encrypt
+ *           cipher16:      pointer to 16 bytes of cipherd text 
+ *
+ *
+ * This function runs in unknown time.
+ */
+
+SECP256K1_API void AES256_decrypt(
+    const AES256_ctx* ctx, 
+    size_t blocks, 
+    unsigned char* plain16, 
+    const unsigned char* cipher16
+) SECP256K1_ARG_NONNULL(1) SECP256K1_ARG_NONNULL(3) SECP256K1_ARG_NONNULL(4);
+
 
 /* Initilize an AES128_CBC encryption.
  *
