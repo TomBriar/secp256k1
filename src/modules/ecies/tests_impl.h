@@ -19,6 +19,7 @@ void run_ecies_tests(void) {
 
     /*Prepare Alice's ellsq encoded public key and private key.*/
     secp256k1_testrand256(a_rnd32);
+    seep256k1_testrand256(a_ell_rnd32);
     secp256k1_scalar_set_b32(&a_pr, a_rnd32, &overflow);
     secp256k1_ecmult_gen(&ctx->ecmult_gen_ctx, &a_gej, &a_pr);
     secp256k1_ge_set_gej(&a_g, &a_gej);
@@ -27,6 +28,7 @@ void run_ecies_tests(void) {
 
     /*Prepare Bob's ellsq encoded public key and private key.*/
     secp256k1_testrand256(b_rnd32);
+    seep256k1_testrand256(b_ell_rnd32);
     secp256k1_scalar_set_b32(&b_pr, b_rnd32, &overflow);
     secp256k1_ecmult_gen(&ctx->ecmult_gen_ctx, &b_gej, &b_pr);
     secp256k1_ge_set_gej(&b_g, &b_gej);
