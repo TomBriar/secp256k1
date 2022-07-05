@@ -422,7 +422,16 @@ if test x"$enable_experimental" = x"yes"; then
       AC_MSG_ERROR([Rangeproof module requires the generator module. Use --enable-module-generator to allow.])
     fi
   fi
-
+  if test x"$enable_module_aes" != x"yes"; then
+    if test x"$enable_module_ecies" = x"yes"; then
+      AC_MSG_ERROR([ECIES module requires the AES module. Use --enable-module-aes to allow.])
+    fi
+  fi
+  if test x"$enable_module_ecdh" != x"yes"; then
+    if test x"$enable_module_ecies" = x"yes"; then
+      AC_MSG_ERROR([ECIES module requires the ECDH module. Use --enable-module-ecdh to allow.])
+    fi
+  fi
   if test x"$enable_module_rangeproof" != x"yes"; then
     if test x"$enable_module_whitelist" = x"yes"; then
       AC_MSG_ERROR([Whitelist module requires the rangeproof module. Use --enable-module-rangeproof to allow.])
