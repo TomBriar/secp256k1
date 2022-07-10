@@ -47,6 +47,10 @@ void help(int default_iters) {
     printf("    ecdh              : ECDH key exchange algorithm\n");
 #endif
 
+#ifdef ENABLE_MODULE_AES
+    printf("    aes               : AES key exchange algorithm\n");
+#endif
+
 #ifdef ENABLE_MODULE_SCHNORRSIG
     printf("    schnorrsig        : all Schnorr signature algorithms (sign, verify)\n");
     printf("    schnorrsig_sign   : Schnorr sigining algorithm\n");
@@ -141,6 +145,10 @@ static void bench_keygen_run(void* arg, int iters) {
 # include "modules/ecdh/bench_impl.h"
 #endif
 
+#ifdef ENABLE_MODULE_AES
+# include "modules/aes/bench_impl.h"
+#endif
+
 #ifdef ENABLE_MODULE_RECOVERY
 # include "modules/recovery/bench_impl.h"
 #endif
@@ -187,6 +195,14 @@ int main(int argc, char** argv) {
     if (have_flag(argc, argv, "ecdh")) { 
         fprintf(stderr, "./bench: ECDH module not enabled.\n");
         fprintf(stderr, "Use ./configure --enable-module-ecdh.\n\n");
+        return 1;
+    }
+#endif
+
+#ifndef ENABLE_MODULE_AES
+    if (have_flag(argc, argv, "aes")) { 
+        fprintf(stderr, "./bench: AES module not enabled.\n");
+        fprintf(stderr, "Use ./configure --enable-module-aes.\n\n");
         return 1;
     }
 #endif

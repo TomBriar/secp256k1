@@ -15,6 +15,10 @@
 # include "../include/secp256k1_ecdh.h"
 #endif
 
+#ifdef ENABLE_MODULE_AES
+# include "../include/secp256k1_aes.h"
+#endif
+
 #ifdef ENABLE_MODULE_RECOVERY
 # include "../include/secp256k1_recovery.h"
 #endif
