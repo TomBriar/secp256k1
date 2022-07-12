@@ -221,6 +221,10 @@ if ENABLE_MODULE_AES
 include src/modules/aes/Makefile.am.include
 endif
 
+if ENABLE_MODULE_ECIES
+include src/modules/ecies/Makefile.am.include
+endif
+
 if ENABLE_MODULE_RECOVERY
 include src/modules/recovery/Makefile.am.include
 endif

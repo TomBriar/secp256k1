@@ -164,6 +164,10 @@ AC_ARG_ENABLE(module_aes,
     AS_HELP_STRING([--enable-module-aes],[enable AES module [default=no]]), [],
     [SECP_SET_DEFAULT([enable_module_aes], [no], [yes])])
 
+AC_ARG_ENABLE(module_ecies,
+    AS_HELP_STRING([--enable-module-ecies],[enable ECIES module [default=no]]), [],
+    [SECP_SET_DEFAULT([enable_module_ecies], [no], [yes])])
+
 AC_ARG_ENABLE(module_recovery,
     AS_HELP_STRING([--enable-module-recovery],[enable ECDSA pubkey recovery module [default=no]]), [],
     [SECP_SET_DEFAULT([enable_module_recovery], [no], [yes])])
@@ -364,6 +368,14 @@ if test x"$enable_module_ecdh" = x"yes"; then
   AC_DEFINE(ENABLE_MODULE_ECDH, 1, [Define this symbol to enable the ECDH module])
 fi
 
+if test x"$enable_module_ecies" = x"yes"; then
+  AC_DEFINE(ENABLE_MODULE_ECIES, 1, [Define this symbol to enable the ECIES module])
+  enable_module_aes=yes
+  enable_module_ellswift=yes
+fi
+
+# Test if AES is set after the ECIES module to allow the ECIES
+# module to set enable_module_aes=yes
 if test x"$enable_module_aes" = x"yes"; then
   AC_DEFINE(ENABLE_MODULE_AES, 1, [Define this symbol to enable the AES module])
 fi
@@ -377,6 +389,8 @@ if test x"$enable_module_schnorrsig" = x"yes"; then
   enable_module_extrakeys=yes
 fi
 
+# Test if ELLSWIFT is set after the ECIES module to allow the ECIES
+# module to set enable_module_ellswift=yes
 if test x"$enable_module_ellswift" = x"yes"; then
   AC_DEFINE(ENABLE_MODULE_ELLSWIFT, 1, [Define this symbol to enable the ElligatorSwift module])
 fi
@@ -424,6 +438,7 @@ AM_CONDITIONAL([USE_EXAMPLES], [test x"$enable_examples" != x"no"])
 AM_CONDITIONAL([USE_BENCHMARK], [test x"$enable_benchmark" = x"yes"])
 AM_CONDITIONAL([ENABLE_MODULE_ECDH], [test x"$enable_module_ecdh" = x"yes"])
 AM_CONDITIONAL([ENABLE_MODULE_AES], [test x"$enable_module_aes" = x"yes"])
+AM_CONDITIONAL([ENABLE_MODULE_ECIES], [test x"$enable_module_ecies" = x"yes"])
 AM_CONDITIONAL([ENABLE_MODULE_RECOVERY], [test x"$enable_module_recovery" = x"yes"])
 AM_CONDITIONAL([ENABLE_MODULE_EXTRAKEYS], [test x"$enable_module_extrakeys" = x"yes"])
 AM_CONDITIONAL([ENABLE_MODULE_SCHNORRSIG], [test x"$enable_module_schnorrsig" = x"yes"])
@@ -446,6 +461,7 @@ echo "  with coverage           = $enable_coverage"
 echo "  with examples           = $enable_examples"
 echo "  module ecdh             = $enable_module_ecdh"
 echo "  module aes              = $enable_module_aes"
+echo "  moudle ecies            = $enable_module_ecies"
 echo "  module recovery         = $enable_module_recovery"
 echo "  module extrakeys        = $enable_module_extrakeys"
 echo "  module schnorrsig       = $enable_module_schnorrsig"

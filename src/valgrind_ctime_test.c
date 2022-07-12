@@ -19,6 +19,10 @@
 # include "../include/secp256k1_aes.h"
 #endif
 
+#ifdef ENABLE_MODULE_ECIES
+# include "../include/secp256k1_ecies.h"
+#endif
+
 #ifdef ENABLE_MODULE_RECOVERY
 # include "../include/secp256k1_recovery.h"
 #endif

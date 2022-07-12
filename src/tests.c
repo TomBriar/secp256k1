@@ -6969,6 +6969,10 @@ void run_ecdsa_edge_cases(void) {
 # include "modules/aes/tests_impl.h"
 #endif
 
+#ifdef ENABLE_MODULE_ECIES
+# include "modules/ecies/tests_impl.h"
+#endif
+
 #ifdef ENABLE_MODULE_RECOVERY
 # include "modules/recovery/tests_impl.h"
 #endif
@@ -7267,6 +7271,11 @@ int main(int argc, char **argv) {
 #ifdef ENABLE_MODULE_AES
     /* aes tests */
     run_aes_tests();
+#endif
+
+#ifdef ENABLE_MODULE_ECIES
+    /* ecies tests */
+    run_ecies_tests();
 #endif
 
 

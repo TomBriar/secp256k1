@@ -51,6 +51,10 @@ void help(int default_iters) {
     printf("    aes               : AES key exchange algorithm\n");
 #endif
 
+#ifdef ENABLE_MODULE_ECIES
+    printf("    ecies             : ECIES key exchange algorithm\n");
+#endif
+
 #ifdef ENABLE_MODULE_SCHNORRSIG
     printf("    schnorrsig        : all Schnorr signature algorithms (sign, verify)\n");
     printf("    schnorrsig_sign   : Schnorr sigining algorithm\n");
@@ -149,6 +153,10 @@ static void bench_keygen_run(void* arg, int iters) {
 # include "modules/aes/bench_impl.h"
 #endif
 
+#ifdef ENABLE_MODULE_ECIES
+# include "modules/ecies/bench_impl.h"
+#endif
+
 #ifdef ENABLE_MODULE_RECOVERY
 # include "modules/recovery/bench_impl.h"
 #endif
@@ -203,6 +211,14 @@ int main(int argc, char** argv) {
     if (have_flag(argc, argv, "aes")) { 
         fprintf(stderr, "./bench: AES module not enabled.\n");
         fprintf(stderr, "Use ./configure --enable-module-aes.\n\n");
+        return 1;
+    }
+#endif
+
+#ifndef ENABLE_MODULE_ECIES
+    if (have_flag(argc, argv, "ecies")) { 
+        fprintf(stderr, "./bench: ECIES module not enabled.\n");
+        fprintf(stderr, "Use ./configure --enable-module-ecies.\n\n");
         return 1;
     }
 #endif

@@ -761,12 +761,16 @@ int secp256k1_tagged_sha256(const secp256k1_context* ctx, unsigned char *hash32,
     return 1;
 }
 
+#ifdef ENABLE_MODULE_ECDH
+# include "modules/ecdh/main_impl.h"
+#endif
+
 #ifdef ENABLE_MODULE_AES
 # include "modules/aes/main_impl.h"
 #endif
 
-#ifdef ENABLE_MODULE_ECDH
-# include "modules/ecdh/main_impl.h"
+#ifdef ENABLE_MODULE_ECIES
+# include "modules/ecies/main_impl.h"
 #endif
 
 #ifdef ENABLE_MODULE_RECOVERY
